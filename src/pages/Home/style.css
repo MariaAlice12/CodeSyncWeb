@@ -1,0 +1,101 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#ff4b6e,#ff0000);
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  background: rgba(255,255,255,0.2);
+
+  color: white;
+
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+input:focus {
+  border: 1px solid white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+button {
+  margin-top: 10px;
+  padding: 12px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: linear-gradient(90deg,#ff4b6e,#ff0000);
+
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 10px #ff4b6e,
+    0 0 20px #ff4b6e,
+    0 0 40px #ff0000;
+}
+
+.background-shapes::before,
+.background-shapes::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.background-shapes::before {
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.2);
+  top: 10%;
+  left: 10%;
+}
+
+.background-shapes::after {
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.15);
+  bottom: -100px;
+  right: -100px;
+}
+
+form {
+  width: 400px;
+  padding: 50px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 0 10px rgba(255,255,255,0.2);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  color: white;
+}
