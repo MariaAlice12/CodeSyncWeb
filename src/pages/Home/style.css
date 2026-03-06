@@ -1,101 +1,124 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg,#ff4b6e,#ff0000);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+
+  background: linear-gradient(
+    135deg,
+    #de6208e3,
+    #a70649eb,
+    #1a8f66,
+    #5dcaf9,
+    #f472b6
+  );
+
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
 }
 
-input {
-  padding: 12px;
-  border-radius: 8px;
-
-  border: 1px solid rgba(255,255,255,0.3);
-
-  background: rgba(255,255,255,0.2);
-
-  color: white;
-
-  outline: none;
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-input::placeholder {
-  color: rgba(255,255,255,0.7);
+.page{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-input:focus {
-  border: 1px solid white;
-  box-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-button {
-  margin-top: 10px;
-  padding: 12px;
+/* card principal */
+.auth-card{
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(6px);
 
-  border: none;
-  border-radius: 30px;
+  width:360px;
+  padding:40px;
 
-  background: linear-gradient(90deg,#ff4b6e,#ff0000);
+  border-radius:16px;
 
-  color: white;
-  font-weight: bold;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 
-  cursor: pointer;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
 
-  transition: 0.3s;
+  animation:fade .4s ease;
 }
 
-button:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 0 10px #ff4b6e,
-    0 0 20px #ff4b6e,
-    0 0 40px #ff0000;
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.background-shapes::before,
-.background-shapes::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
+.auth-card h1{
+  font-size:26px;
+  font-weight:500;
+  text-align:center;
+  margin-bottom:10px;
 }
 
-.background-shapes::before {
-  width: 300px;
-  height: 300px;
-  background: rgba(255,255,255,0.2);
-  top: 10%;
-  left: 10%;
+.auth-card input,
+.auth-card select{
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
+  outline:none;
+  transition:.2s;
 }
 
-.background-shapes::after {
-  width: 400px;
-  height: 400px;
-  background: rgba(255,255,255,0.15);
-  bottom: -100px;
-  right: -100px;
+.auth-card input:focus,
+.auth-card select:focus{
+  border-color:#6366f1;
+  box-shadow:0 0 0 3px rgba(99,102,241,.2);
 }
 
-form {
-  width: 400px;
-  padding: 50px;
+.auth-card button{
+  padding:12px;
+  border:none;
+  border-radius:8px;
 
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background:linear-gradient(
+    135deg,
+    #6366f1,
+    #7c3aed
+  );
 
-  border-radius: 16px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
 
-  border: 1px solid rgba(255,255,255,0.2);
+.auth-card button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,.2);
+}
 
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.3),
-    inset 0 0 10px rgba(255,255,255,0.2);
+/* link troca login/cadastro */
 
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.switch{
+  text-align:center;
+  font-size:14px;
+}
 
-  color: white;
+.switch span{
+  color:#6366f1;
+  font-weight:500;
+  cursor:pointer;
+  margin-left:4px;
+}
+
+.switch span:hover{
+  text-decoration:underline;
 }
