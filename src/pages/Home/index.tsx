@@ -34,7 +34,7 @@ function Home() {
           </>
         ) : (
           <>
-            <h1>Bem-vindo de volta</h1>
+            <h1>Bem-vindo(a) de volta</h1>
 
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Senha" />
