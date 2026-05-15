@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './style.css'
 import Input from '../../components/Input'
@@ -15,11 +16,6 @@ const MODALIDADE_OPTIONS = [
   { value: 'judo', label: 'Judô' },
 ]
 
-const TIPO_OPTIONS = [
-  { value: 'esporadico', label: 'Treino Esporádico' },
-  { value: 'fixo', label: 'Treino Fixo Semanal' },
-]
-
 const DIA_OPTIONS = [
   { value: 'segunda', label: 'Segunda' },
   { value: 'terca', label: 'Terça' },
@@ -30,40 +26,43 @@ const DIA_OPTIONS = [
   { value: 'domingo', label: 'Domingo' },
 ]
 
-const NIVEL_OPTIONS = [
-  { value: 'iniciante', label: 'Iniciante' },
-  { value: 'intermediario', label: 'Intermediário' },
-  { value: 'avancado', label: 'Avançado' },
-]
-
 const INITIAL = {
-  nome: '',
-  modalidade: '',
-  descricao: '',
-  tipo: 'esporadico',
-  data: '',
-  diaSemana: '',
-  horaInicio: '',
-  horaFim: '',
-  local: '',
-  capacidade: '',
-  nivel: '',
-  treinador: '',
+  modality: '',
+  hour: '',
+  address: '',
+  weekday: '',
+  description: '',
+  maxStudents: '',
+  minStudents: '',
 }
 
 function CreateTraining() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const navigate = useNavigate()
   const { values, handleChange } = useForm(INITIAL)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const payload: TrainingPayload = {
-      ...values,
-      tipo: values.tipo as 'esporadico' | 'fixo',
-      capacidade: Number(values.capacidade),
+    setLoading(true)
+    setError('')
+    try {
+      const payload: TrainingPayload = {
+        modality: values.modality,
+        hour: values.hour,
+        address: values.address,
+        weekday: values.weekday,
+        description: values.description || undefined,
+        maxStudents: Number(values.maxStudents),
+        minStudents: Number(values.minStudents),
+      }
+      await createTraining(payload)
+      navigate('/dashboard')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Erro ao salvar treino')
+    } finally {
+      setLoading(false)
     }
-    await createTraining(payload)
-    navigate('/')
   }
 
   return (
@@ -73,45 +72,36 @@ function CreateTraining() {
 
         <div className="form-section">
           <h2>Informações do Treino</h2>
-          <Input name="nome" type="text" placeholder="Nome do treino" value={values.nome} onChange={handleChange} />
-          <Select name="modalidade" placeholder="Modalidade" options={MODALIDADE_OPTIONS} value={values.modalidade} onChange={handleChange} />
+          <Select name="modality" placeholder="Modalidade" options={MODALIDADE_OPTIONS} value={values.modality} onChange={handleChange} />
           <textarea
-            name="descricao"
-            placeholder="Descrição do treino"
-            value={values.descricao}
+            name="description"
+            placeholder="Descrição do treino (opcional)"
+            value={values.description}
             onChange={handleChange}
           />
         </div>
 
         <div className="form-section">
           <h2>Agendamento</h2>
-          <Select name="tipo" options={TIPO_OPTIONS} value={values.tipo} onChange={handleChange} />
-
-          <div className="row">
-            {values.tipo === 'esporadico' ? (
-              <Input name="data" type="date" value={values.data} onChange={handleChange} />
-            ) : (
-              <Select name="diaSemana" placeholder="Dia da semana" options={DIA_OPTIONS} value={values.diaSemana} onChange={handleChange} />
-            )}
-            <Input name="horaInicio" type="time" value={values.horaInicio} onChange={handleChange} />
-            <Input name="horaFim" type="time" value={values.horaFim} onChange={handleChange} />
-          </div>
+          <Select name="weekday" placeholder="Dia da semana" options={DIA_OPTIONS} value={values.weekday} onChange={handleChange} />
+          <Input name="hour" type="time" value={values.hour} onChange={handleChange} />
         </div>
 
         <div className="form-section">
           <h2>Local</h2>
-          <Input name="local" type="text" placeholder="Local do treino" value={values.local} onChange={handleChange} />
-          <h2>Capacidade de atletas</h2>
-          <Input name="capacidade" type="number" value={values.capacidade} onChange={handleChange} />
+          <Input name="address" type="text" placeholder="Endereço / Local do treino" value={values.address} onChange={handleChange} />
         </div>
 
         <div className="form-section">
-          <h2>Configurações</h2>
-          <Select name="nivel" placeholder="Nível do treino" options={NIVEL_OPTIONS} value={values.nivel} onChange={handleChange} />
-          <Input name="treinador" type="text" placeholder="Treinador responsável" value={values.treinador} onChange={handleChange} />
+          <h2>Vagas</h2>
+          <div className="row">
+            <Input name="minStudents" type="number" placeholder="Mínimo de alunos" value={values.minStudents} onChange={handleChange} />
+            <Input name="maxStudents" type="number" placeholder="Máximo de alunos" value={values.maxStudents} onChange={handleChange} />
+          </div>
         </div>
 
-        <Button type="submit">Salvar Treino</Button>
+        {error && <p className="form-error">{error}</p>}
+        <Button type="submit" disabled={loading}>{loading ? 'Salvando...' : 'Salvar Treino'}</Button>
       </form>
     </div>
   )

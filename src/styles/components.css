@@ -39,6 +39,15 @@
   color: #ef4444;
 }
 
+/* Form error message */
+
+.form-error {
+  font-size: 13px;
+  color: #ef4444;
+  text-align: center;
+  margin: 0;
+}
+
 /* Button */
 
 .btn {
@@ -72,4 +81,11 @@
 .btn--secondary:hover {
   background: var(--color-primary);
   color: white;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
