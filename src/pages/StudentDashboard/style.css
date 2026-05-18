@@ -237,3 +237,223 @@
 .empty-state.error {
   color: #ef4444;
 }
+
+/* Profile button */
+
+.student-header__profile {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-input);
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.student-header__profile:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Event card image */
+
+.event-card__image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-input);
+  margin-bottom: 4px;
+}
+
+/* Event card actions */
+
+.event-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-detail-link {
+  width: 100%;
+  padding: 8px;
+  background: #eef2ff;
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.event-detail-link:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Strava */
+
+.strava-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.strava-header .section-title {
+  margin-bottom: 0;
+}
+
+.sync-btn {
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #fc4c02, #e8450a);
+  color: white;
+  border: none;
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sync-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.strava-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.strava-card {
+  background: white;
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.strava-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.strava-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.strava-card__type {
+  font-size: 11px;
+  font-weight: 600;
+  background: #fff3ed;
+  color: #fc4c02;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.strava-card__stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.strava-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.strava-stat__value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.strava-stat__label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.strava-card__date {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Confirm dialog */
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: white;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-dialog__text {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.confirm-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.confirm-btn--cancel {
+  background: #f3f4f6;
+  color: #555;
+}
+
+.confirm-btn--cancel:hover {
+  background: #e5e7eb;
+}
+
+.confirm-btn--danger {
+  background: #ef4444;
+  color: white;
+}
+
+.confirm-btn--danger:hover {
+  background: #dc2626;
+}

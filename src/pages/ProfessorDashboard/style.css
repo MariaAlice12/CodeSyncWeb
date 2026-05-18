@@ -24,6 +24,11 @@
   flex: 1;
 }
 
+.professor-header__actions {
+  display: flex;
+  gap: 8px;
+}
+
 .professor-header__create {
   padding: 8px 18px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
@@ -39,6 +44,23 @@
 
 .professor-header__create:hover {
   opacity: 0.88;
+}
+
+.professor-header__profile {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-input);
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.professor-header__profile:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .professor-header__logout {
@@ -252,6 +274,25 @@
   border-color: #ef4444;
 }
 
+.row-btn--bracket {
+  background: white;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.row-btn--bracket:hover,
+.row-btn--bracket-active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.event-bracket-inline {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
 /* Student list */
 
 .student-list {
@@ -328,6 +369,78 @@
 .student-item__remove:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Modality card actions */
+
+.modality-card__actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+/* Confirm dialog */
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: white;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-dialog__text {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.confirm-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.confirm-btn--cancel {
+  background: #f3f4f6;
+  color: #555;
+}
+
+.confirm-btn--cancel:hover {
+  background: #e5e7eb;
+}
+
+.confirm-btn--danger {
+  background: #ef4444;
+  color: white;
+}
+
+.confirm-btn--danger:hover {
+  background: #dc2626;
 }
 
 /* Empty / error state */

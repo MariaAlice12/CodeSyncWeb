@@ -98,3 +98,28 @@
   border-color: var(--color-primary);
   color: white;
 }
+
+.toggle-btn {
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: var(--radius-input);
+  background: white;
+  font-size: 14px;
+  font-family: var(--font-main);
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  align-self: flex-start;
+}
+
+.toggle-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.toggle-btn--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
