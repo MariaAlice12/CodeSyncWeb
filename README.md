@@ -181,7 +181,7 @@ VITE_API_URL=http://localhost:3000
 
 ## Screenshots
 
-> Em breve — prints das principais telas da aplicação.
+> Prints das principais telas da aplicação.
 
 <!-- Dashboard do Aluno -->
 ![Print](dash_atleta.png)
